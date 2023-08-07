@@ -1,32 +1,36 @@
-import { createToDo } from "./createList.js";
-import { displayDefaultProject, displayTheForm, addItemtoChecklist, clearForm } from "./dom-manipulation.js";
-import { defaultProjects } from "./default-projects.js";
+import { createToDo } from './create-to-do.js';
+import { blankProjectLoad } from './blank-project-load.js';
+import { displayDefaultProject, displayTheForm, addItemToCheckList, clearForm, displayToDo } from './dom-manip.js'
 import './style.css';
 
-    // Call default projects on load
-    // defaultProjects();
 
-    // Call DOM manipulation module to form UI
-    defaultProjects();
+// Call blankProjectLoad on first land
+blankProjectLoad();
 
-    // Click events module
-    let clickEventsModule = (function() {
-        // Click event for displaying the form
-        const addNewToDo = document.querySelector(".add-todo-button");
-        addNewToDo.addEventListener("click", displayTheForm);
+// TODO: Come back to this call if I build out this feature in the future
+// Call DOM Manipulation module to load default project
+//displayDefaultProject();
 
-        // Click event for adding an item to the checklist on the form
-        const addToChecklist = document.querySelector(".add-to-checklist");
-        addToChecklist.addEventListener("click", addItemtoChecklist);
+// Call displayToDo on first land - pulls from web local storage API (if any)
+displayToDo();
 
-        // Click event to clear the form
-        const clearButton = document.querySelector(".reset-button");
-        clearButton.addEventListener("click", clearForm);
+// Click events module
+let clickEventsModule = (function() {
 
-    })();
+    // Click event for displaying the form
+    const addNewToDo = document.querySelector(".add-todo-button");
+    addNewToDo.addEventListener("click", displayTheForm);
 
-    // Create toDo list
-    const myToDo = createToDo("Get Essentials", "Go buy water", "7/16/2023", "High", "Water, Food, Clothes");
-    const myToDo2 = createToDo("Work", "Finish Odin Project course work", "7/16/2023", "High", "Complete Intermediate Javascript, Complete Advanced HTML & CSS")
-    console.log("Show me properties from myToDo1", myToDo);
-    console.log("Show me properties from myToDo2", myToDo2);
+    // Click event for adding an item to the checklist on the form
+    const addToChecklist = document.querySelector(".add-to-checklist");
+    addToChecklist.addEventListener("click", addItemToCheckList);
+
+    // Click event to clear the form
+    const clearButton = document.querySelector(".reset-button");
+    clearButton.addEventListener("click", clearForm);
+
+    // Click event to submit a new todo form to project
+    const submitButton = document.querySelector(".submit-button");
+    submitButton.addEventListener("click", createToDo);
+    
+})();
