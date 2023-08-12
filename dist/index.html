@@ -4,51 +4,130 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Outfit:wght@900&family=Work+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Outfit:wght@900&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="template.js" defer></script>
+
     <title>ToDo List WebApp</title>
     <link rel="stylesheet" href="style.css">
+
+
 </head>
 <body>
-    <div class="content">
-        <div class="form-heading">
-            <h1>Add New ToDo To Project</h1>
-        </div>
-        <div class="todos-heading">
-            <h1>Current ToDos' In Projects'</h1>
-        </div>
-        <div class="form">
-            <button class="add-todo-button">Add New ToDo</button>
-            <div id="add-todo-form" style="display:none">
-                <form id="add-todo">
-                    <!--TODO:  Build out and refactor project to include this feature at a later date-->
-                    <!-- <label for="Project">Project:</label>
-                    <select id="Project", name="Project">
-                    <option value="DefaultProject">Default Project</option>
-                    <option value="Create-New-Project">Create New Project</option>
-                    </select> -->
-                    <label for="Title">Title:</label>
-                    <input type="text" id="Title" name="Title" placeholder="Required Field" required>
-                    <label for="Description">Description:</label>
-                    <input type="text" id="Description" name="Description" placeholder="Required Field" required>
-                    <label for="DueDate">Due Date:</label>
-                    <input type="date" id="DueDate" name="DueDate" placeholder="Required Field" required>
-                    <label for="Priority">Priority:</label>
-                    <select id="Priority", name="Priority">
-                        <option value="Low">Low</option>
-                        <option value="Medium">Medium</option>
-                        <option value="High">High</option>
-                    </select>
-                    <label for="CheckList">CheckList Items Added (if any):</label>
-                    <ul class="todo-ul"></ul>
-                </form>
-                <input type="text" id="add-to-checklist" name="add-to-checklist" placeholder="Type checklist item here">
-                <button class="add-to-checklist">Add Item To Checklist</button>
-                <br>
-                <button type="submit" class="submit-button">Submit ToDo</button>
-                <button type="reset" class="reset-button">Reset Form</button>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-row">
+                <ul class="links">
+                    <li>
+                        <a href>New</a>
+                    </li>
+                    <li>
+                        <a href>Upload</a>
+                    </li>
+                    <li>
+                        <a href>Share</a>
+                    </li>
+                </ul>
+                <div class="wrap">
+                    <div class="search">
+                       <input type="text" class="searchTerm" placeholder="Search">
+                       <button type="submit" class="searchButton">
+                         <i class="fa fa-search"></i>
+                      </button>
+                    </div>
+                 </div>
+
+                <div class="navigation">
+                    <button id="notification"><img src="./img/Notifications.svg" alt="Picture of a notification icon" height="40" width="40"></button>
+                    <div class="divider"></div>
+                    <h3>@Shan207</h3>
+                    <img src="./img/avatar.jpg" alt="avatar" class="avatar" height="30" width="30">
+                </div>
             </div>
         </div>
-        <div class="projects"></div> 
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <h2 id="administrator">Daily Dash</h2>
+                <div class="row">
+                    <div class="s-divider"></div>
+                </div>    
+                <a href id="dashboard">Dashboard</a>
+                <a href id="home">Home</a>
+                <a href id="profile">Profile</a>
+                <a href id="messages">Messages</a>
+                <a href id="tasks">Tasks</a>
+                <a href id="communities">Communities</a>
+                <div class="row">
+                    <div class="s-divider"></div>
+                </div>
+                <a href id="settings">Settings</a>
+                <a href id="support">Support</a>                   
+                <a href id="privacy">Privacy</a>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <div class="form-heading">
+                    <h1>Create New</h1>
+                </div>
+                <div class="todos-heading">
+                    <h1>Current List</h1>
+                </div>
+                <div class="form">            
+                    <button class="add-todo-button">Get Started</button>
+                    <!-- A script that hides the add-todo-button on click -->
+                    <script>
+                    const addButton = document.querySelector('.add-todo-button');
+                    addButton.addEventListener('click', () => {
+                    addButton.style.display = 'none';
+                    });
+                    </script>
+                    <div id="add-todo-form" style="display:none">
+                        <form id="add-todo">
+                            <!--TODO:  Build out and refactor project to include this feature at a later date-->
+                            <!-- <label for="Project">Project:</label>
+                            <select id="Project", name="Project">
+                            <option value="DefaultProject">Default Project</option>
+                            <option value="Create-New-Project">Create New Project</option>
+                            </select> -->
+                            <label for="Title">Title:</label>
+                            <input type="text" id="Title" name="Title" placeholder="Required Field" required>
+                            <label for="Description">Description:</label>
+                            <input type="text" id="Description" name="Description" placeholder="Required Field" required>
+                            <label for="DueDate">Due Date:</label>
+                            <input type="date" id="DueDate" name="DueDate" placeholder="Required Field" required>
+                            <label for="Priority">Priority:</label>
+                            <select id="Priority", name="Priority">
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                            <label for="CheckList">CheckList Items Added (if any):</label>
+                            <ul class="todo-ul"></ul>
+                        </form>
+                        <input type="text" id="add-to-checklist" name="add-to-checklist" placeholder="Type checklist item here">
+                        <button class="add-to-checklist">Add Item To Checklist</button>
+                        <br>
+                        <button type="submit" class="submit-button">Submit ToDo</button>
+                        <button type="reset" class="reset-button">Reset Form</button>
+                    </div>
+                </div>
+                <div class="projects"></div> 
+            </div>
+        
+        </div>
+
     </div>
+
     <script src="main.js"></script>
 </body>
 </html>
